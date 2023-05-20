@@ -27,12 +27,12 @@ export class PickerView {
     private getPoints(io: Output | Input): number[] {
         const mouse = this.editorView.area.mouse;
 
-        if(!io.node) throw new Error('Node in output/input not found')
-    
-        const node = this.editorView.nodes.get(io.node);
+        if (!io.node) throw new Error('Node in output/input not found')
 
-        if(!node) throw new Error('Node view not found')
-    
+        const node = this.editorView.nodes.get(io.node.id);
+
+        if (!node) throw new Error('Node view not found')
+
         const [x1, y1] = node.getSocketPosition(io);
 
         return io instanceof Output
